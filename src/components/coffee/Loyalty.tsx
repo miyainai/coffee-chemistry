@@ -147,15 +147,15 @@ export function StreakCard({ visits, now }: { visits: Visit[]; now: number }) {
         <button onClick={share} className="flex items-center gap-1.5 rounded-full border-2 px-4 py-1.5 text-sm font-medium"><Share className="h-4 w-4" /> Share</button>
       </div>
       <button onClick={() => setOpen(true)} className="mt-4 flex w-full items-center gap-3 text-left" aria-label="Open streak calendar">
-        <div className="flex flex-col items-center">
+        <div className="flex shrink-0 flex-col items-center">
           <Mug n={s.weeks} fill={days.filter((d) => d.checkedIn).length / 7} />
           <span className="text-sm font-semibold text-muted-foreground">Weeks</span>
         </div>
-        <div className="grid flex-1 grid-cols-7 gap-1 text-center">
+        <div className="grid min-w-0 flex-1 grid-cols-7 gap-1.5 text-center">
           {days.map((d, i) => (
             <div key={i} className="flex flex-col items-center gap-2">
               <span className="text-xs text-muted-foreground">{d.label}</span>
-              <span className={`flex h-8 w-8 items-center justify-center rounded-full text-sm ${d.checkedIn ? "bg-primary text-primary-foreground" : "bg-muted"} ${d.today ? "ring-2 ring-foreground ring-offset-2 ring-offset-card" : ""}`}>{d.date}</span>
+              <span className={`flex aspect-square w-full max-w-7 items-center justify-center rounded-full text-xs ${d.checkedIn ? "bg-primary text-primary-foreground" : "bg-muted"} ${d.today ? "ring-2 ring-inset ring-foreground" : ""}`}>{d.date}</span>
             </div>
           ))}
         </div>
